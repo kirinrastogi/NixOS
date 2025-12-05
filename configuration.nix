@@ -85,6 +85,7 @@
      neofetch
      wget
      xclip
+     cowsay
   ];
 
 /*
