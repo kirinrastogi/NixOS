@@ -35,33 +35,36 @@
   }];
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Toronto";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
+
+  hardware.graphics = {
+    enable = true;
+  };
 
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ]; # add modesetting if needed
+    resolutions = [ { x = 3840; y = 2160; }];
     windowManager.qtile.enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kirin = {
     isNormalUser = true;
     description = "kirin";
