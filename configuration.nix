@@ -47,7 +47,7 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ]; # add modesetting if needed
+    videoDrivers = [ "nvidia" ];
     resolutions = [
       { x = 3840; y = 2160; }
       { x = 1920; y = 1080; }
