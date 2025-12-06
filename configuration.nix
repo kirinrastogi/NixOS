@@ -48,8 +48,16 @@
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ]; # add modesetting if needed
-    resolutions = [ { x = 3840; y = 2160; }];
-    windowManager.qtile.enable = true;
+    resolutions = [
+      { x = 3840; y = 2160; }
+      { x = 1920; y = 1080; }
+    ];
+    windowManager = {
+      qtile.enable = true;
+    };
+    displayManager = {
+      lightdm.enable = true;
+    };
     xkb = {
       layout = "us";
       variant = "";
@@ -89,6 +97,8 @@
      wget
      xclip
      cowsay
+     autorandr
+     xorg.xrandr
   ];
 
 /*
