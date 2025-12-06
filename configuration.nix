@@ -82,14 +82,25 @@
   users.users.kirin = {
     isNormalUser = true;
     description = "kirin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
 
   programs.firefox.enable = true;
 
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -99,12 +110,11 @@
      neovim
      btop
      git
-     neofetch
+     fastfetchMinimal
      wget
      xclip
-     cowsay
-     autorandr
      xorg.xrandr
+     pavucontrol
   ];
 
 /*
