@@ -14,11 +14,11 @@
     pkgs.vlc
     pkgs.zsh-powerlevel10k
     pkgs.oh-my-zsh
-    #pkgs.nerd-fonts-complete
     pkgs.cudaPackages.cudatoolkit
     pkgs.ripgrep
     pkgs.fd
     pkgs.fzf
+    pkgs.ollama-cuda
   ];
 
   programs.git = {
@@ -39,13 +39,20 @@
     history.size = 10000;
     oh-my-zsh = {
       enable = true;
-      theme = "powerlevel10k/powerlevel10k";
     };
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = ''
       eval "$(direnv hook zsh)"
+      source ~/.p10k.zsh
     '';
+    plugins = [
+      {
+        name = "powerlevel10k";
+	src = pkgs.zsh-powerlevel10k;
+	file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+    ];
   };
 
   home.file = {
