@@ -89,6 +89,7 @@
     interactiveShellInit = ''
       alias ntest="sudo nixos-rebuild test --flake /home/kirin/nixos"
       alias nswitch="sudo nixos-rebuild switch --flake /home/kirin/nixos"
+      alias hswitch="home-manager switch --flake /home/kirin/nixos"
     '';
   };
 
