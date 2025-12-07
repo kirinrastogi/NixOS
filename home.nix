@@ -6,9 +6,19 @@
 
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = [
     pkgs.docker
     pkgs.nvidia-container-toolkit
+    pkgs.vlc
+    pkgs.zsh-powerlevel10k
+    pkgs.oh-my-zsh
+    #pkgs.nerd-fonts-complete
+    pkgs.cudaPackages.cudatoolkit
+    pkgs.ripgrep
+    pkgs.fd
+    pkgs.fzf
   ];
 
   programs.git = {
@@ -29,8 +39,13 @@
     history.size = 10000;
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "powerlevel10k/powerlevel10k";
     };
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    initContent = ''
+      eval "$(direnv hook zsh)"
+    '';
   };
 
   home.file = {
