@@ -19,6 +19,20 @@
     };
   };
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ntest = "sudo nixos-rebuild test --flake /home/kirin/nixos";
+      nswitch = "sudo nixos-rebuild switch --flake /home/kirin/nixos";
+      hswitch = "home-manager switch --flake /home/kirin/nixos";
+    };
+    history.size = 10000;
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+    };
+  };
+
   home.file = {
   };
 
