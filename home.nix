@@ -19,14 +19,20 @@
     pkgs.fd
     pkgs.fzf
     pkgs.ollama-cuda
+    pkgs.git-lfs
+    pkgs.uv
+    pkgs.bat
   ];
 
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "kirinrastogi";
-      email = "14277509+kirinrastogi@users.noreply.github.com";
+    settings = {
+      user = {
+        name = "kirinrastogi";
+        email = "14277509+kirinrastogi@users.noreply.github.com";
+      };
     };
+    lfs.enable = true;
   };
 
   programs.zsh = {
