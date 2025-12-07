@@ -20,7 +20,7 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    # pkgs.hello
+    pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -68,7 +68,7 @@
   #  /etc/profiles/per-user/kirin/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim"
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

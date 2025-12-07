@@ -10,18 +10,23 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, ... }:
+  let
+    lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in
+  {
+    nixosConfigurations.nixos = lib.nixosSystem {
+      inherit system;
       modules = [
         ./configuration.nix
       ];
     };
 
-    homeConfigurations = {
-      nixos = home-manager.nixpkgs.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x84-64_linux";
-	modules = [ ./home.nix];
-      };
+    homeConfigurations.kirin = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ ./home.nix];
     };
   };
 }
