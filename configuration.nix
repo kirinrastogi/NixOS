@@ -84,9 +84,18 @@
     description = "kirin";
     extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   programs.firefox.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    interactiveShellInit = ''
+      alias ntest="sudo nixos-rebuild test --flake /home/kirin/nixos"
+      alias nswitch="sudo nixos-rebuild switch --flake /home/kirin/nixos"
+    '';
+  };
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -115,6 +124,7 @@
      xclip
      xorg.xrandr
      pavucontrol
+     zsh
   ];
 
 /*
