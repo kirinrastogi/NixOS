@@ -40,5 +40,7 @@
     EDITOR = "nvim";
   };
 
+  programs.direnv.enable = true;
+
   programs.home-manager.enable = true;
 }
