@@ -79,7 +79,7 @@
   users.users.kirin = {
     isNormalUser = true;
     description = "kirin";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -114,22 +114,24 @@
      xorg.xrandr
      pavucontrol
      zsh
+     docker
+     nvidia-docker
   ];
 
-/*
-  programs.git = {
-    enable = true;
-    user = {
-      name = "Kirin Rastogi";
-      email = "14277509+kirinrastogi@users.noreply.github.com";
-    };
-    config = {
-      init = {
-        defaultBranch = "main";
-      };
-    };
+  virtualisation.docker.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
+
+  boot.kernelModules = [
+    "nvidia"
+    "nvidia-modeset"
+    "nvidia-drm"
+    "nvidia-uvm"
+  ];
+
+  environment.variables = {
+    NVIDIA_VISIBLE_DEVICES = "all"; # Use all GPUs; change as needed
+    NVIDIA_DRIVER_CAPABILITIES = "compute,utility"; # Configure based on needs
   };
-*/
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
