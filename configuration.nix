@@ -119,6 +119,7 @@
   ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.daemon.settings.data-root = "/home/kirin/docker";
   hardware.nvidia-container-toolkit.enable = true;
 
   boot.kernelModules = [
