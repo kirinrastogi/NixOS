@@ -95,6 +95,11 @@
     pulse.enable = true;
   };
 
+  services.resolved.enable = true;
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
+  services.tailscale.extraSetFlags = ["--accept-routes"];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -116,6 +121,7 @@
      zsh
      docker
      nvidia-docker
+     tailscale
   ];
 
   virtualisation.docker.enable = true;
