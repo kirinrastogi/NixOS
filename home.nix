@@ -68,6 +68,12 @@
     EDITOR = "nvim";
   };
 
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda;
+    host = "0.0.0.0";
+  };
+
   programs.direnv.enable = true;
 
   programs.home-manager.enable = true;
