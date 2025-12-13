@@ -104,6 +104,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "root" "kirin" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -125,6 +126,11 @@
      kdePackages.dolphin
      kdePackages.qtsvg
      kdePackages.kio
+     ffmpeg-full
+     vlc
+     libvlc
+     mesa-demos
+     devenv
   ];
 
   virtualisation.docker.enable = true;

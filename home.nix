@@ -11,7 +11,6 @@
   home.packages = [
     pkgs.docker
     pkgs.nvidia-container-toolkit
-    pkgs.vlc
     pkgs.zsh-powerlevel10k
     pkgs.oh-my-zsh
     pkgs.cudaPackages.cudatoolkit
@@ -22,6 +21,8 @@
     pkgs.git-lfs
     pkgs.uv
     pkgs.bat
+    pkgs.unzip
+    pkgs.devenv
   ];
 
   programs.git = {
@@ -69,7 +70,7 @@
   };
 
   services.ollama = {
-    enable = true;
+    enable = false;
     package = pkgs.ollama-cuda;
     host = "0.0.0.0";
   };
