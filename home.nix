@@ -23,6 +23,7 @@
     pkgs.bat
     pkgs.unzip
     pkgs.devenv
+    pkgs.qbittorrent
   ];
 
   programs.git = {
